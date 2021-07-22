@@ -67,6 +67,10 @@ class PlayerFragment(private val communication: (Fragment, String) -> Unit) : Fr
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -238,7 +242,12 @@ class PlayerFragment(private val communication: (Fragment, String) -> Unit) : Fr
                     }
                 }
             })
-            playerService.playerDurationLiveData.observe(this@PlayerFragment,{
+            when (playerService.playMode) {
+                Constance.PLAY_MODE_REPEAT_ONE -> binding.btnPlayMode.setImageResource(R.drawable.ic_baseline_repeat_one_24)
+                Constance.PLAY_MODE_REPEAT_ALL -> binding.btnPlayMode.setImageResource(R.drawable.ic_baseline_repeat_24_fill)
+                Constance.PLAY_MODE_SHUFFLE -> binding.btnVolume.setImageResource(R.drawable.ic_baseline_shuffle_24_fill)
+            }
+            playerService.playerDurationLiveData.observe(this@PlayerFragment, {
                 binding.tvDurationPlaying.text = it.convertMilliSecondToMinute()
                 binding.seekBar.max = it
             })
@@ -268,7 +277,7 @@ class PlayerFragment(private val communication: (Fragment, String) -> Unit) : Fr
     }
 
     private fun downloadMusic() {
-        if (Constance.isConnectedInternet(requireContext())){
+        if (Constance.isConnectedInternet(requireContext())) {
             binding.progressDownload.visibility = View.VISIBLE
             binding.btnDownload.visibility = View.INVISIBLE
             binding.btnFavorite.isEnabled = false
@@ -299,16 +308,21 @@ class PlayerFragment(private val communication: (Fragment, String) -> Unit) : Fr
                                 binding.progressDownload.visibility = View.INVISIBLE
                                 binding.btnDownload.visibility = View.VISIBLE
                                 binding.btnFavorite.isEnabled = true
-                                Toast.makeText(requireContext(), R.string.message_download_done, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    requireContext(),
+                                    R.string.message_download_done,
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
-                    }catch (ex:Exception){
-                        Log.e("errDownloading",ex.toString())
+                    } catch (ex: Exception) {
+                        Log.e("errDownloading", ex.toString())
                     }
                 }
 
             }
-        }else Toast.makeText(requireContext(), R.string.message_no_internet, Toast.LENGTH_SHORT).show()
+        } else Toast.makeText(requireContext(), R.string.message_no_internet, Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun getBitmapByUri(context: Context, audioUri: Uri): Bitmap? {

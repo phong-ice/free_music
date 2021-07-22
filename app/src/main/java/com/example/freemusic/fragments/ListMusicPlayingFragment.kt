@@ -66,13 +66,17 @@ class ListMusicPlayingFragment : Fragment() {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             val iBinder = service as PlayerService.PlayerBinder
             playerService = iBinder.getPlayerService()
-            adapterRecyclerView.setPositionPlaying(playerService.position)
+            playerService.positionPlayingLiveData.observe(this@ListMusicPlayingFragment,{
+                adapterRecyclerView.setPositionPlaying(it)
+                binding.lvListMusic.scrollToPosition(it)
+                adapterRecyclerView.notifyItemChanged(it)
+            })
             playerService.listMusicLiveData.observe(this@ListMusicPlayingFragment, {
                 listMusic.clear()
                 listMusic.addAll(it)
                 adapterRecyclerView.notifyDataSetChanged()
             })
-            binding.lvListMusic.scrollToPosition(playerService.position)
+
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {

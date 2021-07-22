@@ -45,7 +45,7 @@ class PlayerService : Service() {
     val currentPositionMediaPlayerLivaData: MutableLiveData<Int> = MutableLiveData()
     val listMusicExternal: MutableLiveData<MutableList<FreeMusic>> = MutableLiveData()
     val playerDurationLiveData: MutableLiveData<Int> = MutableLiveData()
-
+    val positionPlayingLiveData:MutableLiveData<Int> = MutableLiveData()
     //other
     private val listMusic: MutableList<FreeMusic> = mutableListOf()
     private var freeMusic: FreeMusic? = null
@@ -125,6 +125,7 @@ class PlayerService : Service() {
         }
         mediaPlayer?.start()
         createNotification()
+        positionPlayingLiveData.value = position
         drawablePlay = R.drawable.ic_baseline_pause_24
         playerDurationLiveData.value = mediaPlayer?.duration
         listenerChangeCurrentPositionMediaPlayer()
