@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Free Music</string>
+    <string name="library">Library</string>
+    <string name="hint_edt_search">Song ...</string>
+    <string name="playlists">Playlists</string>
+    <string name="favorite">Favorite</string>
+    <string name="name_music_minimize_player">name music minimize player</string>
+    <string name="description_btn_play_minimize">button play music</string>
+    <string name="description_img_avatar">image avatar music</string>
+    <string name="description_image_favorite_music">image favorite music</string>
+    <string name="artist_music">artist music</string>
+    <string name="name_music">Name music</string>
+    <string name="name_playlist">name playlist</string>
+    <string name="total_music">total music</string>
+    <string name="image_avatar_playlist">image avatar playlist</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_btn_back">button back</string>
+    <string name="playlists_favorite">Playlists favorite</string>
+    <string name="playlist_download">Playlist Download</string>
+    <string name="download">Download</string>
+    <string name="no_internet">No internet</string>
+    <string name="message_no_internet">Can\'t do it with no internet</string>
+    <string name="message_no_internet_search">Can\'t look for music with no internet</string>
+    <string name="message_download_done">"Download done "</string>
+</resources>

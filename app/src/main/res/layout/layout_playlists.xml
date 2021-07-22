@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_playlists"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_200dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/playlist_favorite"
+        android:layout_width="@dimen/dimen_148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginLeft="@dimen/dimen_8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carView_img_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_148dp"
+            app:cardCornerRadius="@dimen/dimen_24dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_playlists_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/foreignColor_2"
+                android:contentDescription="@string/image_avatar_playlist"
+                android:padding="@dimen/dimen_16dp"
+                android:src="@drawable/ic_baseline_favorite_24_white" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_favorite_playlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:text="@string/favorite"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/carView_img_favorite" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_total_music_favorite"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@string/total_music"-->
+        <!--            android:textColor="@color/foreignColor_2"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_favorite_playlist" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/playlist_download"
+        android:layout_width="@dimen/dimen_148dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8dp"
+        android:layout_marginLeft="@dimen/dimen_8dp"
+        app:layout_constraintLeft_toRightOf="@id/playlist_favorite"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/carView_img_download"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_148dp"
+            app:cardCornerRadius="@dimen/dimen_24dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_playlists_download"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/foreignColor_2"
+                android:contentDescription="@string/image_avatar_playlist"
+                android:padding="@dimen/dimen_16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_cloud_download_24" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_download_playlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:text="@string/playlist_download"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/carView_img_download" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_total_music_download"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@string/total_music"-->
+        <!--            android:textColor="@color/foreignColor_2"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_download_playlist" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
