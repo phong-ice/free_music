@@ -6,6 +6,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
+import androidx.annotation.RequiresApi
 
 class MyApplication : Application() {
     companion object {
@@ -13,20 +14,20 @@ class MyApplication : Application() {
         const val CHANNEL_NAME = "channel_name"
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel =
-                NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_NONE)
-            notificationChannel.lightColor = Color.BLUE
-            notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
-            notificationChannel.setSound(null, null)
+                NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH)
+//            notificationChannel.lightColor = Color.BLUE
+//            notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+//            notificationChannel.setSound(null, null)
             val manager = getSystemService(NotificationManager::class.java) as NotificationManager
             manager.createNotificationChannel(notificationChannel)
-        }
     }
 }

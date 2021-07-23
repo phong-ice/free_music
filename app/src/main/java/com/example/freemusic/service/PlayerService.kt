@@ -17,6 +17,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.MutableLiveData
 import com.example.freemusic.R
 import com.example.freemusic.activity.HomeActivity
@@ -45,7 +46,8 @@ class PlayerService : Service() {
     val currentPositionMediaPlayerLivaData: MutableLiveData<Int> = MutableLiveData()
     val listMusicExternal: MutableLiveData<MutableList<FreeMusic>> = MutableLiveData()
     val playerDurationLiveData: MutableLiveData<Int> = MutableLiveData()
-    val positionPlayingLiveData:MutableLiveData<Int> = MutableLiveData()
+    val positionPlayingLiveData: MutableLiveData<Int> = MutableLiveData()
+
     //other
     private val listMusic: MutableList<FreeMusic> = mutableListOf()
     private var freeMusic: FreeMusic? = null
@@ -86,6 +88,7 @@ class PlayerService : Service() {
         registerReceiver(broadcastReceiver, IntentFilter(Constance.ACTION_PREVIOUS))
         registerReceiver(broadcastReceiver, IntentFilter(Constance.ACTION_PLAY))
         registerReceiver(broadcastReceiver, IntentFilter(Constance.ACTION_NEXT))
+//        registerReceiver(broadcastReceiver, IntentFilter(Constance.ACTION_STOP_SERVICE))
     }
 
     override fun onBind(intent: Intent?): IBinder {
@@ -173,6 +176,14 @@ class PlayerService : Service() {
                 onPlayMusic()
             }
         }
+    }
+
+    fun onStopMusic() {
+        stopForeground(true)
+        coroutineListenerChangeCurrentMediaPlayer?.cancel(null)
+        coroutineListenerChangeCurrentMediaPlayer = null
+        mediaPlayer?.stop()
+        mediaPlayer?.release()
     }
 
     fun onPreviousMusic() {
@@ -306,7 +317,7 @@ class PlayerService : Service() {
             })
         }
 
-        val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+        val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_favorite_24)
             .setContentTitle(listMusic[position].name)
             .setContentText(listMusic[position].artists_names)
@@ -321,9 +332,16 @@ class PlayerService : Service() {
             .addAction(R.drawable.ic_baseline_fast_rewind_24, "Previous", pendingIntentPrevious)
             .addAction(drawablePlay, "Play or pause", pendingIntentPlay)
             .addAction(R.drawable.ic_baseline_fast_forward_24, "Next", pendingIntentNext)
+//            .addAction(
+//                R.drawable.ic_baseline_close_24, "close", PendingIntent.getBroadcast(
+//                    this, 102,
+//                    Intent(Constance.ACTION_STOP_SERVICE), PendingIntent.FLAG_UPDATE_CURRENT
+//                )
+//            )
             .setStyle(androidx.media.app.NotificationCompat.MediaStyle())
             .setLargeIcon(mBitmap)
             .build()
+        NotificationManagerCompat.from(this).notify(1, notification)
         startForeground(1, notification)
     }
 
@@ -333,6 +351,7 @@ class PlayerService : Service() {
                 Constance.ACTION_NEXT -> onNextMusic()
                 Constance.ACTION_PLAY -> onPauseMusic()
                 Constance.ACTION_PREVIOUS -> onPreviousMusic()
+                Constance.ACTION_STOP_SERVICE -> onStopMusic()
             }
         }
     }
@@ -363,6 +382,8 @@ class PlayerService : Service() {
         unregisterReceiver(broadcastReceiver)
         Log.i("test123", "onDestroy Service")
         stopForeground(true)
+        coroutineListenerChangeCurrentMediaPlayer?.cancel(null)
+        coroutineListenerChangeCurrentMediaPlayer = null
         mediaPlayer?.stop()
         mediaPlayer?.release()
     }

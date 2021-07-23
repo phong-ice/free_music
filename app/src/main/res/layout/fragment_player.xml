@@ -177,7 +177,7 @@
         app:layout_constraintLeft_toRightOf="@id/btn_play"
         android:layout_height="@dimen/dimen_24dp"
         app:layout_constraintRight_toLeftOf="@id/btn_volume"
-        android:src="@drawable/ic_baseline_skip_previous_24"
+        android:src="@drawable/ic_baseline_skip_next_24"
         app:layout_constraintBottom_toBottomOf="@id/btn_play"
         app:layout_constraintTop_toTopOf="@id/btn_play" />
 

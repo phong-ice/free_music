@@ -13,7 +13,7 @@
         android:layout_height="@dimen/dimen_32dp"
         android:layout_marginStart="@dimen/dimen_16dp"
         android:layout_marginLeft="@dimen/dimen_16dp"
-        android:layout_marginTop="@dimen/dimen_24dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
         android:contentDescription="@string/description_btn_back"
         android:padding="@dimen/dimen_4dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
@@ -22,8 +22,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_avatar_music"
-        android:layout_width="@dimen/dimen_200dp"
-        android:layout_height="@dimen/dimen_200dp"
+        android:layout_width="@dimen/dimen_240dp"
+        android:layout_height="@dimen/dimen_240dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -33,7 +33,7 @@
         android:id="@+id/tv_name_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_24dp"
+        android:layout_marginTop="@dimen/dimen_16dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/name_music"
         android:textColor="@color/white"
@@ -48,7 +48,6 @@
         android:layout_height="wrap_content"
         android:text="@string/artist_music"
         android:textColor="@color/foreignColor_2"
-        android:textSize="@dimen/dimen_12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name_music" />
@@ -68,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_4dp"
         android:text="1:30"
-        android:textColor="@color/white"
         android:textSize="@dimen/dimen_12sp"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/seek_bar"
         app:layout_constraintTop_toBottomOf="@id/seek_bar" />
 
@@ -77,10 +76,10 @@
         android:id="@+id/tv_duration_playing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen_12sp"
         android:layout_marginTop="@dimen/dimen_4dp"
         android:text="3:42"
         android:textColor="@color/foreignColor_2"
-        android:textSize="@dimen/dimen_12sp"
         app:layout_constraintRight_toRightOf="@id/seek_bar"
         app:layout_constraintTop_toBottomOf="@id/seek_bar" />
 
@@ -100,17 +99,17 @@
             android:id="@+id/progressDownload"
             android:layout_width="@dimen/dimen_24sp"
             android:layout_height="@dimen/dimen_24sp"
+            android:indeterminateTint="@color/accentColor"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:visibility="gone"
-            android:indeterminateTint="@color/accentColor"
             app:layout_constraintRight_toLeftOf="@id/btn_playlists"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btn_download"
-            android:layout_width="@dimen/dimen_24dp"
-            android:layout_height="@dimen/dimen_24dp"
+            android:layout_width="@dimen/dimen_16dp"
+            android:layout_height="@dimen/dimen_16dp"
             android:src="@drawable/ic_baseline_arrow_downward_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -119,8 +118,8 @@
 
         <ImageView
             android:id="@+id/btn_playlists"
-            android:layout_width="@dimen/dimen_24dp"
-            android:layout_height="@dimen/dimen_24dp"
+            android:layout_width="@dimen/dimen_16dp"
+            android:layout_height="@dimen/dimen_16dp"
             android:src="@drawable/ic_baseline_playlist_play_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/btn_download"
@@ -129,8 +128,8 @@
 
         <ImageView
             android:id="@+id/btn_favorite"
-            android:layout_width="@dimen/dimen_24dp"
-            android:layout_height="@dimen/dimen_24dp"
+            android:layout_width="@dimen/dimen_16dp"
+            android:layout_height="@dimen/dimen_16dp"
             android:src="@drawable/ic_baseline_favorite_24_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/btn_playlists"

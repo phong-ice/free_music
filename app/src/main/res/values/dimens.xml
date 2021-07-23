@@ -21,4 +21,7 @@
     <dimen name="dimen_112dp">112dp</dimen>
     <dimen name="dimen_32sp">32sp</dimen>
     <dimen name="dimen_24sp">24sp</dimen>
+    <dimen name="dimen_300dp">300dp</dimen>
+    <dimen name="dimen_240dp">240dp</dimen>
+    <dimen name="dimen_8sp">8sp</dimen>
 </resources>

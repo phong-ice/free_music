@@ -9,7 +9,7 @@ object Constance {
     const val ACTION_NEXT: String  = "action_next"
     const val ACTION_PLAY: String  = "action_play"
     const val ACTION_PREVIOUS: String  = "action_previous"
-    const val ACTION_CONTENT: String  = "action_content"
+    const val ACTION_STOP_SERVICE: String  = "action_stop_service"
     const val ITEM_ADD_PLAYLIST = "item_add_play_list"
     const val ITEM_FAVORITE_PLAYLIST = "item_favorite_play_list"
     const val ITEM_DOWNLOAD_PLAYLIST = "item_download_play_list"
